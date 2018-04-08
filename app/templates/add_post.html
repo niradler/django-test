@@ -1,0 +1,62 @@
+{% extends "main_template.html" %} {% block content %}
+
+<div id="app-vue">
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    {{title}}
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Add Post</h1>
+            <div class="columns">
+                <div class="column is-6">
+
+                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+                        <form action="/add-post/" method="post">
+                        {% csrf_token %}
+                       
+
+                    <div class="field">
+                        <label class="label">Author</label>
+                        <div class="control">
+                            <input class="input" name="author" type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Category</label>
+                        <div class="control">
+                            <input class="input" type="text" name="category" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Post Content</label>
+                        <div class="control">
+                            <input class="input" type="text" name="post" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+                <input type="submit" value="Submit" class="button is-primary"/>
+            <a class="button is-info" href="/">View Posts</a>
+        </div>
+    </section>
+
+</form>
+
+</div>
+
+
+{% endblock %}
